@@ -5,7 +5,7 @@
 <body>
 
 <h1>Welcome to Dog or Nah</h1>
-<div class='instructions'>
+<div id='instructions'>
   <div id="text">
     <h3>Instructions</h3>
     <p>Press left if the picture shown is a dog, right if it is not</p>
@@ -14,7 +14,7 @@
 </div>
 
 <script>
-  var instructions = $('.instructions');
+  var instructions = document.getElementId('instructions');
   addEventListener("keypress", hideClass(e));
   function hideClass(e) {
     if (e.keyCode == 32) {
