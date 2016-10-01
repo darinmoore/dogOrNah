@@ -20,6 +20,7 @@ function main() {
     randomIndex = Math.floor(Math.random() * NUM_OF_PICS);
 
     var randomPic = picture + randomIndex + '.jpg';
+    
 
     // if guess is incorrect, exits loop  
     if (!correct) {
