@@ -2,4 +2,19 @@
  * File Name: styles.css
  * Description: Contains css styles
  */
+h1 {
+	font-family: 'Raleway', sans-serif;
+ 	font-size: 40px;
+}
+ body {
+ 	font-family: 'Raleway', sans-serif;
+ 	font-size: 20px;
+ }
+ h2 {
+
+ }
+ p{
+
+ }
+
 

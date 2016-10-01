@@ -14,6 +14,7 @@ function main() {
   var picture = 'dogOrNahPic'; // start of string for picture's name
   var dog = false; // if the picture is actually a dog
   var correct = true; // if the user guessed correctly
+  var NUM_OF_PICS = 46;
 
   // Game keeps running as long as mistakes aren't made
   while (correct) {
@@ -36,37 +37,40 @@ function main() {
   
     userScore++;
   }
+}
+  
+//$(document).ready(main);
 
 function checkKey() {    // ALLOW ARROW KEY INTERACTION    
     $(document).keydown(function(event) {
-	switch(event.which) {
-		// left arrowkey 
-		case 37:
-			if (dog) {
-				console.log("CORRECT - IT'S A DOG");
-			}
-			else {
-				console.log("U WRONG - NOT A DOG");
-				correct = false;
-			}
-			break;
-		// right arrowkey
-		case 39:
-			if (!dog) {
-				console.log("CORRECT - NOT DOG");
-			}
-			else {
-				console.log("U WRONG - IS DOG);
-				correct = false;
-			}
-			break;
-		// exit for other keys pressed
-		default:
-			return;
-	}
-	event.preventDefault();
+		switch(event.which) {
+			// left arrowkey 
+			case 37:
+				console.log("LEFT ARROWKEY TEST PRINT");
+				if (!dog) {
+					correct = false;
+				}
+				break;
+			// right arrowkey
+			case 39:
+				console.log("RIGHT ARROW KEY TEST PRINT");
+				if (dog) {
+					correct = false;
+				}
+				break;
+				// exit for other keys pressed
+			default:
+				return;
+		}
+		event.preventDefault();
     });
 };
 
-
-}
+$(document).keydown(function(event) {
+	console.log(event)
+	// event listener for space bar
+	if (event.which == 32) {
+		console.log("HI THIS SPACEBAR IS BEING PRESSED");
+		$(document).empty();
+	}
+});
