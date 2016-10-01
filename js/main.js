@@ -20,7 +20,24 @@ function main() {
     randomIndex = Math.floor(Math.random() * NUM_OF_PICS);
 
     var randomPic = picture + randomIndex + '.jpg';
-    
+    // DISPLAY PICTURE
+    // ALLOW ARROW KEY INTERACTION    
+    $(document).keydown(function(event) {
+	switch(event.which) {
+		// left arrowkey 
+		case 37:
+			break;
+		// right arrowkey
+		case 39:
+			break;
+		// exit for other keys pressed
+		default:
+			return;
+	}
+	event.preventDefault();
+    });
+
+    // MAKE THE CORRECT VARIABLE ACTUALLY
 
     // if guess is incorrect, exits loop  
     if (!correct) {
