@@ -6,20 +6,22 @@
 
 <h1>Welcome to Dog or Nah</h1>
 <div class='instructions'>
-  <h3>Instructions</h3>
-  <input type="instructions" value="hihi" 
-  onfocus="if(this.value=='hihi')this.value='';" />
+  <div id="text">
+    <h3>Instructions</h3>
+    <p>Press left if the picture shown is a dog, right if it is not</p>
+    <p>Press space button to start the game</p>
+  </div>
 </div>
 
-<!--cript>
+<script>
   var instructions = $('.instructions');
   addEventListener("keypress", hideClass(e));
   function hideClass(e) {
     if (e.keyCode == 32) {
-      $(instructions).hide();
+      document.getElementById("text").style.display = "none";
     }
   }
-</script>-->
+</script>
 
 <script src=
 "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
