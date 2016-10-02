@@ -1,6 +1,7 @@
 /*
  * File Name: main.js
  * Description: Drives dogOrNah
+ * Authors: Anthony Tseng, Brandon Tran, Darin Moore, Sandra Luo
  */
 
 /*
