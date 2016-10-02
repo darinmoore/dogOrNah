@@ -11,10 +11,20 @@ function main() {
   
   var userScore = 0; // keeps track of user's score
   var randomIndex = 0; // random index to determine photo
-  var picture = 'dogOrNahPic'; // start of string for picture's name
+  var picture = '/pics/dogOrNawPic'; // start of string for picture's name
   var dog = false; // if the picture is actually a dog
   var correct = true; // if the user guessed correctly
   var NUM_OF_PICS = 46;
+
+  // picture array that stores all the dog and food pictures
+  var picArray = [];
+
+  // loop through all pictures and add them to the array
+  for (var i = 0; i < NUM_OF_PICS; i++) {
+     // want to use correct path name before image
+     var pic = picture + i + ".jpg";
+     picArray.push(pic);
+  }
 
   // Game keeps running as long as mistakes aren't made
   while (correct) {
@@ -22,24 +32,26 @@ function main() {
     // chooses a random number to determine random picture
     randomIndex = Math.floor(Math.random() * NUM_OF_PICS);
 
-    var randomPic = picture + randomIndex + '.jpg';
+    var randomPic = picArray[randomIndex];
 
-    if (randomIndex < 30) {
+    // Display the picture
+    $(randomPic).show();
+
+    // if the picture number is below 23, it is a dog
+    if (randomIndex < 23) {
     	dog = true;
     }
+    // pictures after 23 are food
     else {
     	dog = false;
     }
-    // DISPLAY PICTURE
+
     // MAKE THE CORRECT VARIABLE ACTUALLY
     checkKey();
-    // if guess is incorrect, exits loop  
-  
+    // increase the user's score with every correct guess
     userScore++;
   }
 }
-  
-//$(document).ready(main);
 
 function checkKey() {    // ALLOW ARROW KEY INTERACTION    
     $(document).keydown(function(event) {
@@ -60,7 +72,6 @@ function checkKey() {    // ALLOW ARROW KEY INTERACTION
 				break;
 				// exit for other keys pressed
 			default:
-				return;
 		}
 		event.preventDefault();
     });
@@ -70,7 +81,6 @@ $(document).keydown(function(event) {
 	console.log(event)
 	// event listener for space bar
 	if (event.which == 32) {
-		console.log("HI THIS SPACEBAR IS BEING PRESSED");
 		$(document).empty();
 	}
 });
