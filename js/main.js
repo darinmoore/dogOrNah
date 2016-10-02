@@ -13,6 +13,7 @@ var randomIndex = 0; // random index to determine photo
 var correct = true; // if the user guessed correctly
 var NUM_OF_PICS = 46;
 var isSpacePressed = false;
+var loopOnce = false; // used to clear timer if already looped
 
 // picture array that stores all the dog and food pictures, less than 24 is dog
 var picArray = ['http://i.imgur.com/rzFbvjp.jpg', 'http://i.imgur.com/ROihO4e.jpg',
@@ -69,7 +70,6 @@ $(document).keyup(function(event) {
       userScore++;
       gameDriver();
     }
-    clearTimeout(timer);
   }
   // right arrowkey pressed (right for is not a dog)
   else if (event.which == 39 && correct && isSpacePressed) {
@@ -84,9 +84,7 @@ $(document).keyup(function(event) {
       userScore++;
       gameDriver();
     }
-    clearTimeout(timer);
   }
-    
 });
 
 
@@ -98,7 +96,14 @@ function gameDriver() {
 
       var randomPic = picArray[randomIndex];
 
+      // resets timer
+      if (loopOnce) {
+        clearTimeout(timer);
+      }
+
+      // starts timer
       timer = setTimeout(loseGame, 2000);
+      loopOnce = true;
 
       // Display the picture
       $('#dogOrNah').attr('src', randomPic);
