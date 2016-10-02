@@ -47,26 +47,21 @@ $(document).keyup(function(event) {
 	console.log("ENTERED KEYDOWN");
 	// event listener for space bar
 	if (event.which == 32) {
-
     console.log("ENTERED SPACE");
-    isSpacePressed = true;
-    
+    userScore = 0;
+    correct = true;
     // clears the screen of the instructions
     $('.Instructions').text('');
     gameDriver();
-
-
   }
 
     // left arrowkey pressed
-  if (event.which == 37) {
+  if (event.which == 37 && correct == true) {
     console.log("LEFT ARROWKEY TEST PRINT");
     if (!dog) {
       correct = false;
       // clears the screen of the instructions
       $('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!');  
-      // reset the user score
-      userScore = 0;
     }
     else {
       // increase the user's score with every correct guess
@@ -75,14 +70,12 @@ $(document).keyup(function(event) {
     }
   }
   // right arrowkey pressed
-  else if (event.which == 39) {
+  else if (event.which == 39 && correct == true) {
     console.log("RIGHT ARROW KEY TEST PRINT");
     if (dog) {
       correct = false;
       // clears the screen of the instructions
       $('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!');
-      // reset the user score
-      userScore = 0;
     }
     else {
       // increase the user's score with every correct guess
