@@ -8,16 +8,16 @@
  */
 
 var dog = false; // if the picture is actually a dog
+var userScore = 0; // keeps track of user's score
 
 function main() {
 
-  var userScore = 0; // keeps track of user's score
   var randomIndex = 0; // random index to determine photo
   var picture = '/pics/dogOrNawPic'; // start of string for picture's name
   var correct = true; // if the user guessed correctly
   var NUM_OF_PICS = 46;
 
-  // picture array that stores all the dog and food pictures
+  // picture array that stores all the dog and food pictures, less than 24 is dog
   var picArray = ['http://i.imgur.com/rzFbvjp.jpg', 'http://i.imgur.com/ROihO4e.jpg',
                   'http://i.imgur.com/ZsNa00P.jpg', 'http://i.imgur.com/3Srp3px.jpg',
                   'http://i.imgur.com/HsyTnKP.jpg', 'http://i.imgur.com/p4PQO1i.jpg',
@@ -63,43 +63,34 @@ function main() {
     	dog = false;
     }
 
-    // MAKE THE CORRECT VARIABLE ACTUALLY
-    checkKey();
-
   }
 }
 
-function checkKey() {    // ALLOW ARROW KEY INTERACTION    
-    $(document).keydown(function(event) {
-		switch(event.which) {
-			// left arrowkey 
-			case 37:
-				console.log("LEFT ARROWKEY TEST PRINT");
-				if (!dog) {
-					correct = false;
-				}
-				else {
-               // increase the user's score with every correct guess
-               userScore++;
-            }
-            break;
-			// right arrowkey
-			case 39:
-				console.log("RIGHT ARROW KEY TEST PRINT");
-				if (dog) {
-					correct = false;
-				}
-            else {
-               // increase the user's score with every correct guess
-               userScore++;
-            }
-				break;
-				// exit for other keys pressed
-			default:
-		}
-		event.preventDefault();
-    });
-};
+// ALLOW ARROW KEY INTERACTION    
+$(document).keydown(function(event) {
+	if (event.which == 37) {
+		// left arrowkey 
+			console.log("LEFT ARROWKEY TEST PRINT");
+			if (!dog) {
+				correct = false;
+			}
+			else {
+        // increase the user's score with every correct guess
+        userScore++;
+      }
+  }
+	else if (event.which == 39) {
+			console.log("RIGHT ARROW KEY TEST PRINT");
+			if (dog) {
+				correct = false;
+			}
+      else {
+        // increase the user's score with every correct guess
+        userScore++;
+      }
+	}
+});
+
 
 $(document).keydown(function(event) {
 	console.log(event)
@@ -108,4 +99,3 @@ $(document).keydown(function(event) {
 		$(document).empty();
 	}
 });
-
