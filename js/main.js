@@ -50,13 +50,14 @@ $(document).keyup(function(event) {
     console.log("ENTERED SPACE");
     userScore = 0;
     correct = true;
+    isSpacePressed = true;
     // clears the screen of the instructions
     $('.Instructions').text('');
     gameDriver();
   }
 
     // left arrowkey pressed (left for is a dog)
-  if (event.which == 37 && correct == true) {
+  if (event.which == 37 && correct && isSpacePressed) {
     console.log("LEFT ARROWKEY TEST PRINT");
     if (!dog) {
       correct = false;
@@ -70,7 +71,7 @@ $(document).keyup(function(event) {
     }
   }
   // right arrowkey pressed (right for is not a dog)
-  else if (event.which == 39 && correct == true) {
+  else if (event.which == 39 && correct && isSpacePressed) {
     console.log("RIGHT ARROW KEY TEST PRINT");
     if (dog) {
       correct = false;
@@ -106,8 +107,5 @@ function gameDriver() {
         dog = false;
       }
 
-
-
-	//}
 }
 
