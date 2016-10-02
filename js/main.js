@@ -12,8 +12,8 @@ var dog = false; // if the picture is actually a dog
 var userScore = 0; // keeps track of user's score
 var randomIndex = 0; // random index to determine photo
 var correct = true; // if the user guessed correctly
-var NUM_OF_PICS = 46;
-var isSpacePressed = false;
+var NUM_OF_PICS = 46; // numner of pics
+var isSpacePressed = false; // bool to see if spacebar is pressed
 var loopOnce = false; // used to clear timer if already looped
 
 // picture array that stores all the dog and food pictures, less than 24 is dog
@@ -44,12 +44,11 @@ var picArray = ['http://i.imgur.com/rzFbvjp.jpg', 'http://i.imgur.com/ROihO4e.jp
 
 
 
-
+// checks key events
 $(document).keyup(function(event) {
-	console.log("ENTERED KEYDOWN");
-	// event listener for space bar
+	
+  // event listener for space bar
 	if (event.which == 32) {
-    console.log("ENTERED SPACE");
     userScore = 0;
     correct = true;
     isSpacePressed = true;
@@ -60,26 +59,33 @@ $(document).keyup(function(event) {
 
   // left arrowkey pressed (left for is a dog)
   if (event.which == 37 && correct && isSpacePressed) {
-    console.log("LEFT ARROWKEY TEST PRINT");
+    
+    // if guess is incorrect
     if (!dog) {
       correct = false;
       // clears the screen of the instructions
       $('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!');  
     }
+    
+    // if guess is correct
     else {
       // increase the user's score with every correct guess
       userScore++;
       gameDriver();
     }
   }
+
   // right arrowkey pressed (right for is not a dog)
   else if (event.which == 39 && correct && isSpacePressed) {
-    console.log("RIGHT ARROW KEY TEST PRINT");
+    
+    // if guess is correct
     if (dog) {
       correct = false;
       // clears the screen of the instructions
       $('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!');
     }
+    
+    // if guess is incorrect
     else {
       // increase the user's score with every correct guess
       userScore++;
@@ -88,7 +94,7 @@ $(document).keyup(function(event) {
   }
 });
 
-
+/* Runs game events */
 function gameDriver() {
     // Game keeps running as long as mistakes aren't made
     //while (correct && isSpacePressed) {
@@ -120,6 +126,7 @@ function gameDriver() {
 
 }
 
+/* Handles lose game scenario for running out of time */
 function loseGame() {
   correct = false;
   $('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!');
