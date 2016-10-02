@@ -103,7 +103,7 @@ function gameDriver() {
       }
 
       // starts timer
-      timer = setTimeout(loseGame, 2000);
+      timer = setTimeout(loseGame, 1000);
       loopOnce = true;
 
       // Display the picture
