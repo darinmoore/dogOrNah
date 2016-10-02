@@ -20,9 +20,9 @@ function main() {
   var picArray = [];
 
   // loop through all pictures and add them to the array
-  for (var i = 0; i < NUM_OF_PICS; i++) {
+  for (var i = 0; i <= NUM_OF_PICS; i++) {
      // want to use correct path name before image
-     var pic = picture + i + ".jpg";
+     var pic = picture + i + '.jpg';
      picArray.push(pic);
   }
 
