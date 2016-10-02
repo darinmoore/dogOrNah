@@ -16,8 +16,9 @@ var NUM_OF_PICS = 46; // numner of pics
 var isSpacePressed = false; // bool to see if spacebar is pressed
 var loopOnce = false; // used to clear timer if already looped
 
-// picture array that stores all the dog and food pictures, less than 24 is dog
-var picArray = ['http://i.imgur.com/rzFbvjp.jpg', 'http://i.imgur.com/ROihO4e.jpg',
+// picture array that stores all the dog and food pictures, less than 24 in array are dog photos
+var picArray = ['http://i.imgur.com/rzFbvjp.jpg', 
+				'http://i.imgur.com/ROihO4e.jpg',
                 'http://i.imgur.com/ZsNa00P.jpg', 'http://i.imgur.com/3Srp3px.jpg',
                 'http://i.imgur.com/HsyTnKP.jpg', 'http://i.imgur.com/p4PQO1i.jpg',
                 'http://i.imgur.com/vumvSPK.jpg', 'http://i.imgur.com/nQ1lmON.jpg',
@@ -42,88 +43,85 @@ var picArray = ['http://i.imgur.com/rzFbvjp.jpg', 'http://i.imgur.com/ROihO4e.jp
                 'http://i.imgur.com/ReM1YFp.jpg', 'http://i.imgur.com/qvjxeLB.jpg',
                 'http://i.imgur.com/hKTzKyg.jpg'];
 
-
-
-// checks key events
+// checks for keyboard events
 $(document).keyup(function(event) {
 	
-  // event listener for space bar
+	// event listener for space bar
 	if (event.which == 32) {
-    userScore = 0;
-    correct = true;
-    isSpacePressed = true;
-    // clears the screen of the instructions
-    $('.Instructions').text('');
-    gameDriver();
-  }
+    	userScore = 0;
+    	correct = true;
+    	isSpacePressed = true;
+    	// clears the screen of the instructions
+    	$('.Instructions').text('');
+    	gameDriver();
+  	}
 
-  // left arrowkey pressed (left for is a dog)
-  if (event.which == 37 && correct && isSpacePressed) {
+	// left arrowkey pressed (left for is a dog)
+	if (event.which == 37 && correct && isSpacePressed) {
     
-    // if guess is incorrect
-    if (!dog) {
-      correct = false;
-      // clears the screen of the instructions
-      $('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!');  
-    }
+    	// if guess is incorrect
+    	if (!dog) {
+    		correct = false;
+      		// clears the screen of the instructions
+      		$('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!\n');  
+    	}
     
-    // if guess is correct
-    else {
-      // increase the user's score with every correct guess
-      userScore++;
-      gameDriver();
-    }
-  }
+    	// if guess is correct
+    	else {
+      		// increase the user's score with every correct guess
+     		userScore++;
+      		gameDriver();
+    	}
+  	}
 
-  // right arrowkey pressed (right for is not a dog)
-  else if (event.which == 39 && correct && isSpacePressed) {
+  	// right arrowkey pressed (right for is not a dog)
+  	else if (event.which == 39 && correct && isSpacePressed) {
     
-    // if guess is correct
-    if (dog) {
-      correct = false;
-      // clears the screen of the instructions
-      $('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!');
-    }
+    	// if guess is correct
+    	if (dog) {
+      		correct = false;
+      		// clears the screen of the instructions
+      		$('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!');
+    	}
     
-    // if guess is incorrect
-    else {
-      // increase the user's score with every correct guess
-      userScore++;
-      gameDriver();
-    }
-  }
+    	// if guess is incorrect
+    	else {
+      		// increase the user's score with every correct guess
+      		userScore++;
+      		gameDriver();
+    	}
+  	}
 });
 
 /* Runs game events */
 function gameDriver() {
     // Game keeps running as long as mistakes aren't made
     //while (correct && isSpacePressed) {
-      // chooses a random number to determine random picture
-      randomIndex = Math.floor(Math.random() * NUM_OF_PICS);
+    // chooses a random number to determine random picture
+    randomIndex = Math.floor(Math.random() * NUM_OF_PICS);
 
-      var randomPic = picArray[randomIndex];
+    var randomPic = picArray[randomIndex];
 
-      // resets timer
-      if (loopOnce) {
-        clearTimeout(timer);
-      }
+    // resets timer
+    if (loopOnce) {
+    	clearTimeout(timer);
+    }
 
-      // starts timer
-      timer = setTimeout(loseGame, 1000);
-      loopOnce = true;
+    // starts timer
+    timer = setTimeout(loseGame, 1000);
+    loopOnce = true;
 
-      // Display the picture
-      $('#dogOrNah').attr('src', randomPic);
+    // Display the picture
+    $('#dogOrNah').attr('src', randomPic);
 
-      // if the picture number is below 23, it is a dog
-      if (randomIndex < 24) {
-        dog = true;
-      }
-      // pictures after 23 are food
-      else {
-        dog = false;
-      }
-
+    // if the picture number is below 23, it is a dog
+    if (randomIndex < 24) {
+    	dog = true;
+    }
+    // pictures after 23 are food
+    else {
+    	dog = false;
+    }
 }
 
 /* Handles lose game scenario for running out of time */

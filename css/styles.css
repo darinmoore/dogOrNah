@@ -4,7 +4,7 @@
  * Authors: Anthony Tseng, Brandon Tran, Darin Moore, Sandra Luo
  */
 h1 {
-	font-family: 'Finger Paint', cursive;;
+	font-family: 'Finger Paint', cursive;
  	font-size: 80px;
  	text-align: center;
 }
@@ -17,6 +17,7 @@ body {
 .pugContainer {
 	margin-left: -600px;
 	vertical-align: center;
+	
 }
 .muffinContainer {
 	margin-top: -200px;
