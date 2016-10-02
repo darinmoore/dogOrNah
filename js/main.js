@@ -55,10 +55,10 @@ $(document).keyup(function(event) {
     gameDriver();
   }
 
-    // left arrowkey pressed
+    // left arrowkey pressed (left for not a dog)
   if (event.which == 37 && correct == true) {
     console.log("LEFT ARROWKEY TEST PRINT");
-    if (!dog) {
+    if (dog) {
       correct = false;
       // clears the screen of the instructions
       $('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!');  
@@ -69,10 +69,10 @@ $(document).keyup(function(event) {
       gameDriver();
     }
   }
-  // right arrowkey pressed
+  // right arrowkey pressed (right for is a dog)
   else if (event.which == 39 && correct == true) {
     console.log("RIGHT ARROW KEY TEST PRINT");
-    if (dog) {
+    if (!dog) {
       correct = false;
       // clears the screen of the instructions
       $('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!');
