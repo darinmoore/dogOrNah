@@ -63,7 +63,7 @@ $(document).keyup(function(event) {
     	if (!dog) {
     		correct = false;
       		// clears the screen of the instructions
-      		$('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!\n');  
+      		$('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!');  
     	}
     
     	// if guess is correct
