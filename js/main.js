@@ -7,12 +7,13 @@
  * Function Name: main()
  */
 
+var dog = false; // if the picture is actually a dog
+
 function main() {
-  
+
   var userScore = 0; // keeps track of user's score
   var randomIndex = 0; // random index to determine photo
   var picture = '/pics/dogOrNawPic'; // start of string for picture's name
-  var dog = false; // if the picture is actually a dog
   var correct = true; // if the user guessed correctly
   var NUM_OF_PICS = 46;
 
@@ -24,7 +25,7 @@ function main() {
      // want to use correct path name before image
      var pic = picture + i + '.jpg';
      picArray.push(pic);
-  }
+   }
 
   // Game keeps running as long as mistakes aren't made
   while (correct) {
@@ -35,7 +36,7 @@ function main() {
     var randomPic = picArray[randomIndex];
 
     // Display the picture
-    $(randomPic).show();
+    $('#dogOrNah').attr('src', randomPic);
 
     // if the picture number is below 23, it is a dog
     if (randomIndex < 23) {
@@ -48,8 +49,7 @@ function main() {
 
     // MAKE THE CORRECT VARIABLE ACTUALLY
     checkKey();
-    // increase the user's score with every correct guess
-    userScore++;
+
   }
 }
 
@@ -62,13 +62,21 @@ function checkKey() {    // ALLOW ARROW KEY INTERACTION
 				if (!dog) {
 					correct = false;
 				}
-				break;
+				else {
+               // increase the user's score with every correct guess
+               userScore++;
+            }
+            break;
 			// right arrowkey
 			case 39:
 				console.log("RIGHT ARROW KEY TEST PRINT");
 				if (dog) {
 					correct = false;
 				}
+            else {
+               // increase the user's score with every correct guess
+               userScore++;
+            }
 				break;
 				// exit for other keys pressed
 			default:
@@ -84,3 +92,4 @@ $(document).keydown(function(event) {
 		$(document).empty();
 	}
 });
+
