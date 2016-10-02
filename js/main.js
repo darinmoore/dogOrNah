@@ -52,7 +52,6 @@ $(document).keyup(function(event) {
     isSpacePressed = true;
     
     // clears the screen of the instructions
-    //$(document).empty();
     $('.Instructions').text('');
     gameDriver();
 
@@ -64,6 +63,10 @@ $(document).keyup(function(event) {
     console.log("LEFT ARROWKEY TEST PRINT");
     if (!dog) {
       correct = false;
+      // clears the screen of the instructions
+      $('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!');  
+      // reset the user score
+      userScore = 0;
     }
     else {
       // increase the user's score with every correct guess
@@ -76,6 +79,10 @@ $(document).keyup(function(event) {
     console.log("RIGHT ARROW KEY TEST PRINT");
     if (dog) {
       correct = false;
+      // clears the screen of the instructions
+      $('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!');
+      // reset the user score
+      userScore = 0;
     }
     else {
       // increase the user's score with every correct guess
@@ -91,8 +98,6 @@ function gameDriver() {
     //while (correct && isSpacePressed) {
       // chooses a random number to determine random picture
       randomIndex = Math.floor(Math.random() * NUM_OF_PICS);
-
-      console.log(randomIndex);
 
       var randomPic = picArray[randomIndex];
 
