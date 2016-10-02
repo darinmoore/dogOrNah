@@ -56,7 +56,7 @@ $(document).keyup(function(event) {
     gameDriver();
   }
 
-    // left arrowkey pressed (left for is a dog)
+  // left arrowkey pressed (left for is a dog)
   if (event.which == 37 && correct && isSpacePressed) {
     console.log("LEFT ARROWKEY TEST PRINT");
     if (!dog) {
@@ -69,6 +69,7 @@ $(document).keyup(function(event) {
       userScore++;
       gameDriver();
     }
+    clearTimeout(timer);
   }
   // right arrowkey pressed (right for is not a dog)
   else if (event.which == 39 && correct && isSpacePressed) {
@@ -83,9 +84,11 @@ $(document).keyup(function(event) {
       userScore++;
       gameDriver();
     }
+    clearTimeout(timer);
   }
     
 });
+
 
 function gameDriver() {
     // Game keeps running as long as mistakes aren't made
@@ -94,6 +97,8 @@ function gameDriver() {
       randomIndex = Math.floor(Math.random() * NUM_OF_PICS);
 
       var randomPic = picArray[randomIndex];
+
+      timer = setTimeout(loseGame, 2000);
 
       // Display the picture
       $('#dogOrNah').attr('src', randomPic);
@@ -109,3 +114,7 @@ function gameDriver() {
 
 }
 
+function loseGame() {
+  correct = false;
+  $('.Instructions').text('Game Over! Press space bar to play again. Your score is ' + userScore + '!');
+}
