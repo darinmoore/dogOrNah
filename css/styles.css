@@ -8,9 +8,18 @@ h1 {
  	font-size: 80px;
  	text-align: center;
 }
- body {
+body {
  	font-family: 'Raleway', sans-serif;
  	font-size: 20px;
  	text-align: center;
  	background-color: lightblue;
  }
+.pugContainer {
+	margin-left: -600px;
+	vertical-align: center;
+}
+.muffinContainer {
+	margin-top: -200px;
+	margin-left: 600px;
+	vertical-align: center;
+}
