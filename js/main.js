@@ -4,10 +4,6 @@
  * Authors: Anthony Tseng, Brandon Tran, Darin Moore, Sandra Luo
  */
 
-/*
- * Function Name: main()
- */
-
 var dog = false; // if the picture is actually a dog
 var userScore = 0; // keeps track of user's score
 var randomIndex = 0; // random index to determine photo
@@ -15,8 +11,11 @@ var correct = true; // if the user guessed correctly
 var NUM_OF_PICS = 110; // numner of pics
 var isSpacePressed = false; // bool to see if spacebar is pressed
 var loopOnce = false; // used to clear timer if already looped
+var lastPics = []; // keeps track of which pics have been used in the order used
+var randomPic = "";
 
-// picture array that stores all the dog and food pictures, less than 44 in array are dog photos
+// picture array that stores all the dog and food pictures, less than 44 in array 
+// are dog photos
 var picArray = ['http://i.imgur.com/EcSfwiD.jpg', 'http://i.imgur.com/Jss0iB9.jpg',
                 'http://i.imgur.com/KrRnEO4.jpg', 'http://i.imgur.com/SOacMAb.jpg',
                 'http://i.imgur.com/RSCQJ4I.jpg', 'http://i.imgur.com/ROqdxuN.jpg',
@@ -125,15 +124,28 @@ $(document).keyup(function(event) {
 
 /* Runs game events */
 function gameDriver() {
-    // Game keeps running as long as mistakes aren't made
-    //while (correct && isSpacePressed) {
     // chooses a random number to determine random picture
     randomIndex = Math.floor(Math.random() * NUM_OF_PICS);
+    randomPic = picArray[randomIndex];
 
-    var randomPic = picArray[randomIndex];
-
+    // keeps track of all 
+    lastPics.push(randomIndex);
     // resets timer
     if (loopOnce) {
+        indexLastPic = lastPics.indexOf(randomIndex);
+        // loops until picture was not one of last 5
+        while (indexLastPic < (lastPics.length - 5)) {
+            // if pic is not in array
+            if (indexLastPic == -1) {
+                break;
+            }
+            // assigns new random picb  
+            randomIndex = Math.floor(Math.random() * NUM_OF_PICS);
+            randomPic = picArray[randomIndex];
+            // keeps track of all 
+            lastPics.push(randomIndex);
+            indexLastPic = lastPics.indexOf(randomIndex);
+        }
     	clearTimeout(timer);
     }
 
@@ -145,7 +157,7 @@ function gameDriver() {
     $('#dogOrNah').attr('src', randomPic);
 
     // if the picture number is below 23, it is a dog
-    if (randomIndex < NUM_OF_PICS/2) {
+    if (randomIndex < NUM_OF_PICS/2 ) {
     	dog = true;
     }
     // pictures after 23 are food
