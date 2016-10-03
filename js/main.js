@@ -4,10 +4,6 @@
  * Authors: Anthony Tseng, Brandon Tran, Darin Moore, Sandra Luo
  */
 
-/*
- * Function Name: main()
- */
-
 var dog = false; // if the picture is actually a dog
 var userScore = 0; // keeps track of user's score
 var randomIndex = 0; // random index to determine photo
@@ -130,7 +126,6 @@ $(document).keyup(function(event) {
 function gameDriver() {
     // chooses a random number to determine random picture
     randomIndex = Math.floor(Math.random() * NUM_OF_PICS);
-
     randomPic = picArray[randomIndex];
 
     // keeps track of all
