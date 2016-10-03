@@ -145,7 +145,7 @@ function gameDriver() {
     $('#dogOrNah').attr('src', randomPic);
 
     // if the picture number is below 23, it is a dog
-    if (randomIndex < NUM_OF_PICS/2) {
+    if (randomIndex <= NUM_OF_PICS/2) {
     	dog = true;
     }
     // pictures after 23 are food
