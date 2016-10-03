@@ -12,12 +12,18 @@ var dog = false; // if the picture is actually a dog
 var userScore = 0; // keeps track of user's score
 var randomIndex = 0; // random index to determine photo
 var correct = true; // if the user guessed correctly
-var NUM_OF_PICS = 86; // numner of pics
+var NUM_OF_PICS = 110; // numner of pics
 var isSpacePressed = false; // bool to see if spacebar is pressed
 var loopOnce = false; // used to clear timer if already looped
 
 // picture array that stores all the dog and food pictures, less than 44 in array are dog photos
-var picArray = ['http://i.imgur.com/gmazC7Z.jpg', 'http://i.imgur.com/LDQh5Ym.jpg',
+var picArray = ['http://i.imgur.com/EcSfwiD.jpg', 'http://i.imgur.com/Jss0iB9.jpg',
+                'http://i.imgur.com/KrRnEO4.jpg', 'http://i.imgur.com/SOacMAb.jpg',
+                'http://i.imgur.com/RSCQJ4I.jpg', 'http://i.imgur.com/ROqdxuN.jpg',
+                'http://i.imgur.com/5D8tIWz.jpg', 'http://i.imgur.com/vhIjNXk.jpg',
+                'http://i.imgur.com/QZsJvTb.jpg', 'http://i.imgur.com/ZbyXHFF.jpg',
+                'http://i.imgur.com/wPPgMNw.jpg', 'http://i.imgur.com/J8vOV9x.jpg', 
+                'http://i.imgur.com/gmazC7Z.jpg', 'http://i.imgur.com/LDQh5Ym.jpg',
                 'http://i.imgur.com/jjZtkWZ.jpg', 'http://i.imgur.com/kBDblra.jpg',
                 'http://i.imgur.com/cI1qtpn.jpg', 'http://i.imgur.com/u5D5eXc.jpg',
                 'http://i.imgur.com/aws6hV4.jpg', 'http://i.imgur.com/gzDomnJ.jpg',
@@ -59,7 +65,13 @@ var picArray = ['http://i.imgur.com/gmazC7Z.jpg', 'http://i.imgur.com/LDQh5Ym.jp
                 'http://i.imgur.com/fAGpRNH.jpg', 'http://i.imgur.com/1yvzReG.jpg',
                 'http://i.imgur.com/RGu22Fy.jpg', 'http://i.imgur.com/hjt3mSk.jpg',
                 'http://i.imgur.com/VPrW8mW.jpg', 'http://i.imgur.com/L1wIFye.jpg',
-                'http://i.imgur.com/GOS70Zr.jpg', 'http://i.imgur.com/u1UN5Ho.jpg'];
+                'http://i.imgur.com/GOS70Zr.jpg', 'http://i.imgur.com/u1UN5Ho.jpg',
+                'http://i.imgur.com/Bir1LS6.jpg', 'http://i.imgur.com/ns5ceI2.jpg',
+                'http://i.imgur.com/yAeOJRi.jpg', 'http://i.imgur.com/udo1Omf.jpg',
+                'http://i.imgur.com/PQlJCMv.jpg', 'http://i.imgur.com/iTX1CTC.jpg',
+                'http://i.imgur.com/Dvgtafw.jpg', 'http://i.imgur.com/SfzSTou.jpg',
+                'http://i.imgur.com/FKqeaN6.jpg', 'http://i.imgur.com/ECC5gAU.jpg',
+                'http://i.imgur.com/2eGIjLT.jpg', 'http://i.imgur.com/kfhgGpV.jpg'];
 
 // checks for keyboard events
 $(document).keyup(function(event) {
@@ -133,7 +145,7 @@ function gameDriver() {
     $('#dogOrNah').attr('src', randomPic);
 
     // if the picture number is below 23, it is a dog
-    if (randomIndex <= NUM_OF_PICS/2) {
+    if (randomIndex < NUM_OF_PICS/2) {
     	dog = true;
     }
     // pictures after 23 are food
