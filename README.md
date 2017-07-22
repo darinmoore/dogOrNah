@@ -1,7 +1,5 @@
 # Dog Or Nah
-
 http://dogornah.herokuapp.com/
-
 Project For SD Hacks 2016
 
 User is challenged to determine whether a photo shown to them is either a dog or not.
